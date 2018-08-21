@@ -1,91 +1,11 @@
 <?php
-//================================================Functions=============================================================
-//4 Task
 
-function Week($day)
-{
-
-
-    switch ($day) {
-        case 1:
-            $RussionName = 'Понедельник!';
-            break;
-        case 2:
-            $RussionName = 'Вторник!';
-            break;
-        case 3:
-            $RussionName = 'Среда!';
-            break;
-        case 4:
-            $RussionName = 'Четверг!';
-            break;
-        case 5:
-            $RussionName = 'Пятница!';
-            break;
-        case 6:
-            $RussionName = 'Субота!';
-            break;
-        case 7:
-            $RussionName = 'Воскресенье!';
-            break;
-        default:
-            $RussionName = 'Нет такого дня недели! Введите от 1 до 7!';
-            break;
-    }
-    return $RussionName;
-}
-
-echo Week(7);
-
-exit();
-
-
-//3 Task
-
-        function AremeticOperations($x, $y, $z)
-        {
-            if ($z !== 0) {
-
-                return $return = ($x - $y) / $z;
-            } else {
-                echo('Третий параметр не может = 0! Измените его!');
-            }
-        }
-
-        $result = AremeticOperations(88, 44, 1);
-        echo($result);
-
-
-        exit();
-
-//2 Task
-        function SumNumbers($x, $y)
-        {
-            return $sum = $x + $y;
-        }
-
-        $result = SumNumbers(44, -55);
-        echo($result);
-
-        exit();
-
-//1 Task
-        function SquareReturn($x)
-        {
-            return $square = $x * $x;
-        }
-
-        $result = SquareReturn(99);
-        echo $result;
-
-        exit();
 //================================================Branching=============================================================
-
 //10 Task
 $minutes = 17;
 //Цыкл зеленого и красного цвета состоит с 5 минут 3+2
-$cycle = 5;
-$module = $minutes % $cycle;
+difine(CICLE, 5);
+$module = $minutes % CICLE;
 if ($minutes >= 0 && $minutes <= 60) {
 //Если по модулю остача 0,1,2 - зеленый цвет. 3,4 - красный.
     if ($module == 0 || $module == 1 || $module == 2) {
@@ -94,7 +14,7 @@ if ($minutes >= 0 && $minutes <= 60) {
         echo('Красный цвет!');
     }
 } else {
-    echo('Время не входит в диапазон разрешенного!')
+    echo('Время не входит в диапазон разрешенного!');
 }
 exit();
 
@@ -182,21 +102,21 @@ exit();
 //6 Task
 $High = false;
 $Year = mt_rand(1, 2018);//1704;
-$Four = 4;
-$OneHundred = 100;
-$FourHundred = 400;
+define(FOUR,  4);
+define(ONEHUNDRED, 100);
+define(FOURHUNDRED, 400);
 //Проверим делится ли на 400 (остача по модулю)
-$HighYear1 = $Year % $FourHundred;
+$HighYearFourHundred = $Year % FOURHUNDRED;
 //Проверим делится ли на 4 (остача по модулю)
-$HighYear2 = $Year % $Four;
+$HighYearFour = $Year % FOUR;
 //Проверим делится ли на 100 (остача по модулю)
-$HighYear3 = $Year % $OneHundred;
+$HighYearOneHundred = $Year % ONEHUNDRED;
 
-if ($HighYear1 == 0) {
+if ($HighYearFourHundred == 0) {
     $High = true;
-} elseif ($HighYear2 == 0 && $HighYear3 == 0) {
+} elseif ($HighYearFour == 0 && $HighYearOneHundred == 0) {
     $High = false;
-} elseif ($HighYear2 == 0 && $HighYear3 !== 0) {
+} elseif ($HighYearFour == 0 && $HighYearOneHundred !== 0) {
     $High = true;
 }
 //True - Высокосный год, False - Не высокосный
