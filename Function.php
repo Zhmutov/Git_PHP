@@ -1,28 +1,25 @@
 <?php
 //===========================================================Function===================================================
 
-//11 Task // Не до конца решено
-$number = 23456;
-if (is_int($number)) {
-   // $first = substr($number, 0, 1);
-    //var_dump($first);
-    $len = strlen($number);
-    $step = 0;
-    while ($step <$len) {
-        $array[$step] = (int)substr($number, $step, 1);
-        $step++;
-        if ($step == 10) {
-            exit();
-        }
+//11 Task 
+function sumNumber($number){
+    $sum = 0;
+    $array = str_split($number,1);
+    foreach ($array as $value){
+        $sum = $sum + $value;
     }
-    $sum = array_sum($array);
-
-
-}else{
-    echo 'Нужно ввести число, или убрать кавычки!';
+if ($sum > 9){  
+		return sumNumber($sum);
+	}else {
+		return $sum;
+	}
 }
 
-echo($sum);
+ 
+
+$number = 12345;
+
+echo sumNumber($number);
 
 exit();
 

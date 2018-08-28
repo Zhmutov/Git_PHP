@@ -1,2 +1,2 @@
-Hi teacher!
-Test.
+--Отправка на сервер.
+ git push -u origin master
