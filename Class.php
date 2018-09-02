@@ -12,6 +12,7 @@ class Worker
     {
         return $this->name = $name;
     }
+
     public function getName()
     {
         return $this->name;
@@ -19,27 +20,26 @@ class Worker
 
     public function setAge($age)
     {
-
-        return $this->age = $age;
-        $this->checkAge();
+        if (isset($this->age)) {
+            return $this->checkAge($age);
+        } else {
+            return $this->age = $age;
+        }
     }
 
-    public function checkAge()
+    private function checkAge($check)
     {
-        $check = $this->age;
-        if (1<=$check && $check<=100) {
-             $this->newAge = $check;
-            return $this->setAge($this->newAge);
-        }else {
-            return $this->newAge;//$this->setAge($this->newAge);
-            //$result = false;
+
+        if (1 <= $check && $check <= 100) {
+            return $this->age = $check;
+        } else {
+            return $this->age;
         }
 
     }
 
     public function getAge()
     {
-        //$this->checkAge($this->age);
         return $this->age;
     }
 
@@ -47,6 +47,7 @@ class Worker
     {
         return $this->salary = $salary;
     }
+
     public function getSalary()
     {
         return $this->salary;
@@ -61,13 +62,12 @@ $salaryIvan = $ivan->setSalary(1000);
 $vasya = new Worker();
 $nameVasya = $vasya->setName('Vasya');
 $ageVasya = $vasya->setAge(26);
-$salaryVasya= $vasya->setSalary(2000);
+$salaryVasya = $vasya->setSalary(2000);
 
 echo 'Age = ' . ($ageIvan + $ageVasya) . PHP_EOL;
-echo 'Salary = ' . ($salaryIvan + $salaryVasya).PHP_EOL;
-var_dump($ivan->checkAge());
-echo $ivan->setAge(111).PHP_EOL;
-var_dump($ivan->checkAge());
+echo 'Salary = ' . ($salaryIvan + $salaryVasya) . PHP_EOL;
+echo $ivan->setAge(111) . PHP_EOL;
+
 
 
 exit();
@@ -80,8 +80,9 @@ class Worker
 
     public function setName($name)
     {
-       return $this->name = $name;
+        return $this->name = $name;
     }
+
     public function getName()
     {
         return $this->name;
@@ -89,8 +90,9 @@ class Worker
 
     public function setAge($age)
     {
-       return $this->age = $age;
+        return $this->age = $age;
     }
+
     public function getAge()
     {
         return $this->age;
@@ -98,8 +100,9 @@ class Worker
 
     public function setSalary($salary)
     {
-       return $this->salary = $salary;
+        return $this->salary = $salary;
     }
+
     public function getSalary()
     {
         return $this->salary;
@@ -114,12 +117,13 @@ $salaryIvan = $ivan->setSalary(1000);
 $vasya = new Worker();
 $nameVasya = $vasya->setName('Vasya');
 $ageVasya = $vasya->setAge(26);
-$salaryVasya= $vasya->setSalary(2000);
+$salaryVasya = $vasya->setSalary(2000);
 
 echo 'Age = ' . ($ageIvan + $ageVasya) . PHP_EOL;
 echo 'Salary = ' . ($salaryIvan + $salaryVasya);
 
 exit();
+
 //1 Task
 class Worker
 {
@@ -138,10 +142,8 @@ $nameVasya = $vasya->name = 'Vasya';
 $ageVasya = $vasya->age = 26;
 $salaryVasya = $vasya->salary = 2000;
 
-echo 'Age = '.($ageIvan+$ageVasya).PHP_EOL;
-echo 'Salary = '.($salaryIvan+$salaryVasya);
-
-
+echo 'Age = ' . ($ageIvan + $ageVasya) . PHP_EOL;
+echo 'Salary = ' . ($salaryIvan + $salaryVasya);
 
 
 exit();
@@ -158,26 +160,26 @@ class Computer
     function start()
     {
         $this->isWorking = true;
-        echo 'Computer is working'.PHP_EOL;
+        echo 'Computer is working' . PHP_EOL;
     }
 
     function shutDown()
     {
         $this->isWorking = false;
-        echo 'Computer is off'.PHP_EOL;
+        echo 'Computer is off' . PHP_EOL;
     }
 
     function restart()
     {
         if ($this->isWorking) {
             $this->shutDown();
-            for ($timer = 5; $timer>0; $timer--) {
-                echo'.';
+            for ($timer = 5; $timer > 0; $timer--) {
+                echo '.';
                 sleep(1);
             }
             echo PHP_EOL;
             $this->start();
-        }else{
+        } else {
             echo 'Computer must be turned on for restart' . PHP_EOL;
         }
     }
