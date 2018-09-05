@@ -1,4 +1,173 @@
 <?php
+//6 Task
+
+class Show
+{
+    public $linkShow;
+
+    function show()
+    {
+        echo "<a $this->linkShow</a>";
+    }
+}
+
+class Attr
+{
+    public $link;
+
+    function setAttr($x,$y)
+    {
+        $res = "$x =\"$y\">$this->link";
+        $show = new Show();
+        $show->linkShow = $res;
+        return $show;
+    }
+}
+
+class Tag
+{
+    function setText($link)
+    {
+        $attr = new Attr();
+        $attr->link = $link;
+        return $attr;
+    }
+}
+
+$tag = new Tag();
+$tag->setText("cсылка")->setAttr('href', 'index.html')->Show();
+exit();
+
+?>
+
+
+
+<form>
+
+
+    <meta charset="UTF-8">
+    <?php
+    $save = $_GET['save'] ?: '';
+    $write = $_GET['write'] ?: '';
+    $clear = $_GET['clear'];
+
+    ?>
+    <center>
+        Сохранить в Лог: <input type='text' name='save' value=<? $save ?>>
+        <input type='submit'>
+        </br>
+        </br>
+        Считать последние записи:<input type='text' name='write' value=<? $write ?>>
+        <input type='submit'>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+
+        <input type='submit' name="clear" value="Очистить лог!">
+    </center>
+    </br>
+
+
+</form>
+
+<?php
+
+class Log
+{
+    private $file;
+
+    function __construct()
+    {
+        $this->file = fopen('log.txt', 'a');
+    }
+
+    public function saveToLog($str)
+    {
+        if (!empty($str)) {
+
+            fwrite($this->file, "\n $str ");
+            echo "<center>$str  Save! \n</center>";
+        }
+    }
+
+    public function writeFromLog($countNeed)
+    {
+        if (!empty($countNeed)) {
+            $open = file('log.txt');
+            if (!empty($open)) {
+
+                $count = count($open);
+                $startColumn = $count - $countNeed;
+                $i = 0;
+                foreach ($open as $value) {
+                    if ($startColumn <= $i) {
+                        $newArray[] = $value;
+                    }
+                    $i++;
+                }
+
+                foreach ($newArray as $result) {
+                    echo "<center>$result  \n</center>";
+                }
+            } else {
+                echo 'Log Пустой!' . PHP_EOL;
+            }
+        }
+    }
+
+    public function clearLog($clear)
+    {
+        if (!empty($clear)) {
+
+            fopen('log.txt', 'w+');
+            echo "<center>Log Очищено!</center>";
+        }
+    }
+}
+
+$object = new Log();
+$save = $object->saveToLog($save);
+$write = $object->writeFromLog($write);
+$clear = $object->clearLog($clear);
+
+
+
+exit();
+
+//4 Task
+
+
+class Worker
+{
+    private $name;
+    private $salary;
+    public $age;
+
+    function __construct($name, $salary)
+    {
+        $this->name = $name;
+        $this->salary = $salary;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getSalary()
+    {
+        return $this->salary;
+    }
+}
+
+$object = new Worker('Dima', 1000, 25);
+echo $object->getName() . PHP_EOL;
+echo $object->getSalary();
+
+exit();
+
 //3 Task
 
 class Worker
@@ -67,7 +236,6 @@ $salaryVasya = $vasya->setSalary(2000);
 echo 'Age = ' . ($ageIvan + $ageVasya) . PHP_EOL;
 echo 'Salary = ' . ($salaryIvan + $salaryVasya) . PHP_EOL;
 echo $ivan->setAge(111) . PHP_EOL;
-
 
 
 exit();
